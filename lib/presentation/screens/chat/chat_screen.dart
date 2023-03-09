@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:english_words/english_words.dart';
 import 'package:mini_chat/widgets/chat/bubble_message.dart';
+import 'package:mini_chat/widgets/chat/other_bubble_message.dart';
+import 'package:mini_chat/widgets/shared/messsage_box.dart';
 
 class ChatScreen extends StatelessWidget {
   const ChatScreen({Key? key}) : super(key: key);
@@ -40,12 +42,15 @@ class _ChatView extends StatelessWidget {
           child: ListView.builder(
             itemCount: 30,
             itemBuilder: (BuildContext context, int index) {
-              // final String sentence = generateWordPairs().toList().join(' ');
-              // print(sentence);
-              return const BubbleMessage(sentence: 'hola mundo feliz');
+              final String message =
+                  generateWordPairs().take(10).toList().join(' ');
+              return (index % 2 == 0)
+                  ? BubbleMessage(message: message)
+                  : OtherBubbleMessage(message: message, image: index % 3 == 0);
             },
           ),
-        )
+        ),
+        const MessageBox(),
       ],
     );
   }

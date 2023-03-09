@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 class BubbleMessage extends StatelessWidget {
-  final String sentence;
+  final String message;
 
   const BubbleMessage({
     Key? key,
-    required this.sentence,
+    required this.message,
   }) : super(key: key);
 
   @override
@@ -19,15 +19,20 @@ class BubbleMessage extends StatelessWidget {
           width: MediaQuery.of(context).size.width * 0.75,
           margin: const EdgeInsets.symmetric(vertical: 6, horizontal: 8),
           padding: const EdgeInsets.all(12),
-          decoration: const BoxDecoration(
-            color: Color(0xFFC9C9C9),
-            borderRadius: BorderRadius.only(
+          decoration: BoxDecoration(
+            color: colors.primary,
+            borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(20),
               topRight: Radius.circular(20),
               bottomLeft: Radius.circular(20),
             ),
           ),
-          child: Text(sentence),
+          child: Text(
+            message,
+            style: const TextStyle(
+              color: Color(0xFFFFFFFF),
+            ),
+          ),
         )
       ],
     );
